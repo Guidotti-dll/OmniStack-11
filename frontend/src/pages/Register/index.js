@@ -11,30 +11,32 @@ import api from '../../services/api';
 export default function Register() {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
-    const [whatsApp,setWhatsApp] = useState('');
+    const [whatsapp,setWhatsApp] = useState('');
     const [city,setCity] = useState('');
     const [uf,setUf] = useState('');
 
     const history = useHistory();
     
-    async function handleRegister(e){
+    async function handleRegister(e) {
         e.preventDefault();
 
         const data = {
             name,
             email,
-            whatsApp,
+            whatsapp,
             city,
             uf,
         };
 
         try{
-            const response = await api.post('/ongs', data);
 
+            const response = await api.post('/ongs', data);
             alert(`Seu ID de acesso: ${response.data.id}`);
+
             history.push('/');
         } catch (err) {
-            alert('Erro no cadastro, tente novamente.');
+            alert('Erro no cadastro, tente novamente');
+        
         }
     }
 
@@ -68,7 +70,7 @@ export default function Register() {
 
                     <input 
                         placeholder="WhatsApp"
-                        value={whatsApp}
+                        value={whatsapp}
                         onChange={e => setWhatsApp(e.target.value)}
                     />
 
